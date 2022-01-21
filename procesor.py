@@ -52,8 +52,16 @@ def procesor():
 
         czas += 1  # licznik czasu
         print("kolejka procesów: {}".format(kolejka))
+    
+    
     for x in range(len(stat_procesy)):      
         print("pid = {}".format(x)+" czas zakończenia = {}".format(stat_procesy[x][0])+" czas oczekiwania = {}".format(stat_procesy[x][1]))
     
+    suma=0
+    for x in range(len(stat_procesy)):
+        suma+=stat_procesy[x][1]
+    print("sredni_czas_oczekiwania = {}".format(suma/len(stat_procesy)))
+    print("łączny czas oczekiwania = {}".format(suma))
+
     with open("wyniki_szeregowanie.json","w") as wyniki:
         json.dump(stat_procesy,wyniki)
