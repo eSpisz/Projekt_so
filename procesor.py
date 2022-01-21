@@ -9,7 +9,7 @@ def procesor():
     #generator.generator_procesów() #wywołanie generatora danych
 
     plik = "dane_testowe_szeregowanie.json"    
-    with open(plik) as plik_json:     #ładowanie danych z pliku
+    with open(plik,"r") as plik_json:     #ładowanie danych z pliku
         procesy_pomocnicza=json.load(plik_json)
 
     procesy={}   # key=PID, wartosc tablicy[0]=czas przyjscia, wartosc tablicy[1]=czas wykonywania procesu
@@ -54,3 +54,6 @@ def procesor():
         print("kolejka procesów: {}".format(kolejka))
     for x in range(len(stat_procesy)):      
         print("pid = {}".format(x)+" czas zakończenia = {}".format(stat_procesy[x][0])+" czas oczekiwania = {}".format(stat_procesy[x][1]))
+    
+    with open("wyniki_szeregowanie.json","w") as wyniki:
+        json.dump(stat_procesy,wyniki)

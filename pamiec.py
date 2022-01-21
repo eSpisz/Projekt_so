@@ -42,4 +42,7 @@ def pamiec():
         print("obecny stan pamięci ram: {}".format(pamiec_ram))
         print("obecny stan pamięci na dysku: {}".format(pamiec_dysk))
     print("liczba_wymienionych stron= {}".format(liczba_wymienionych))
+    print("procent wymienionych stron (ilosc_wymian/takty) = {}%".format(liczba_wymienionych*100/czas))
 
+    with open("wyniki_zastepowanie.json","w") as wyniki:  #zapis wyników do pliku
+        json.dump((liczba_wymienionych/czas)*100,wyniki)
